@@ -19,7 +19,9 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
   };
 
-  outputs = { self, nixpkgs, ... }@inputs: {
+  outputs = { self, nixpkgs, ... }@inputs: let
+    pkgs = import nixpkgs { system = "x86_64-linux"; };
+  in {
     nixosConfigurations.clyz-minecraft = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       specialArgs = { inherit inputs; };
@@ -28,5 +30,33 @@
         ./system
       ];
     };
+
+    colmena = {
+      meta = {
+        nixpkgs = pkgs;
+        specialArgs = { inherit inputs; };
+      };
+
+      clyz-minecraft = { name, nodes, pkgs, ... }: {
+        deployment = {
+          targetHost = "119.3.234.247";
+          tags = [ "production" ];
+        };
+
+        imports = [
+          ./system
+        ];
+      };
+    };
+
+    devShells.x86_64-linux.default = let
+      mkShell = pkgs.mkShell.override { stdenv = pkgs.stdenvNoCC; };
+    in
+      mkShell {
+        packages = with pkgs; [
+          nil
+          colmena
+        ];
+      };
   };
 }
