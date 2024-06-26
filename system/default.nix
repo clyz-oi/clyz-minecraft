@@ -35,5 +35,15 @@
   services.openssh.enable = true;
   programs.zsh.enable = true;
 
+  environment.systemPackages = with pkgs; [
+    bat
+    fd
+    git
+    helix
+    htop
+    neofetch
+    ripgrep
+  ];
+
   system.stateVersion = "24.11";
 }

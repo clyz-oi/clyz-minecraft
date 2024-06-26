@@ -20,7 +20,7 @@
   };
 
   outputs = { self, nixpkgs, ... }@inputs: {
-    nixosConfigurations.clyz-mc = nixpkgs.lib.nixosSystem {
+    nixosConfigurations.clyz-minecraft = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       specialArgs = { inherit inputs; };
 
