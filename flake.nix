@@ -22,6 +22,8 @@
   outputs = { self, nixpkgs, ... }@inputs: let
     pkgs = import nixpkgs { system = "x86_64-linux"; };
   in {
+    packages.x86_64-linux.minecraft-server = pkgs.callPackage ./pkgs/minecraft-server {};
+
     nixosConfigurations.clyz-minecraft = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       specialArgs = { inherit inputs; };
