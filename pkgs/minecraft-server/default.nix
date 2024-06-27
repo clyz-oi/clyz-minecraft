@@ -6,9 +6,9 @@
 }:
 
 let
-  mcVersion = "1.21";
+  mcVersion = "1.20.1";
   loaderVersion = "0.15.11";
-  launcherVersion = "0.11.2";
+  launcherVersion = "1.0.1";
 in
 stdenvNoCC.mkDerivation {
   pname = "minecraft-server";
@@ -16,7 +16,7 @@ stdenvNoCC.mkDerivation {
 
   src = fetchurl {
     url = "https://meta.fabricmc.net/v2/versions/loader/${mcVersion}/${loaderVersion}/${launcherVersion}/server/jar";
-    hash = "sha256-tvYlRJPtDSGCd0FiNC08DBEI5Jmi/NxXH3lQgya5hvM=";
+    hash = "sha256-/j9wIzYSoP+ZEfeRJSsRwWhhTNkTMr+vN40UX9s+ViM=";
   };
 
   dontUnpack = true;

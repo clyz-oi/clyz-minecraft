@@ -3,7 +3,7 @@
 {
   imports = [
     ./hardware.nix
-    ../modules
+    ./service.nix
   ];
 
   networking.hostName = "clyz-minecraft";
