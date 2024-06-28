@@ -24,12 +24,15 @@
   in {
     packages.x86_64-linux.minecraft-server = pkgs.callPackage ./pkgs/minecraft-server {};
 
+    nixosModules.minecraft-server = import ./modules/minecraft-server;
+
     nixosConfigurations.clyz-minecraft = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       specialArgs = { inherit inputs; };
 
       modules = [
         ./system
+        self.nixosModules.minecraft-server
       ];
     };
 
@@ -47,6 +50,7 @@
 
         imports = [
           ./system
+          self.nixosModules.minecraft-server
         ];
       };
     };
