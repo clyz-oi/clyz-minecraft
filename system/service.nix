@@ -13,6 +13,8 @@
       server-port = 25600;
       difficulty = "hard";
       white-list = false;
+      ensure-secure-profile = false;
+      allow-flight = true;
     };
 
     jvmOpts = "-Xmx3896M -Xms2048M";
