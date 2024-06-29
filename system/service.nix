@@ -9,7 +9,7 @@
     declarative = true;
 
     serverProperties = {
-      level-seed = -4495076908537055101;
+      level-seed = -6614766569353866106;
       server-port = 25600;
       difficulty = "hard";
       white-list = false;
