@@ -16,7 +16,10 @@
       initialPassword = "";
       shell = pkgs.zsh;
       extraGroups = [ "wheel" "networkmanager" ];
-      openssh.authorizedKeys.keys = [ ''ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJyy0QeqzONPideu1mBNPXZvmPmf6hV7yoCSjrkOSzaT oo-infty@oo-laptop'' ];
+      openssh.authorizedKeys.keys = [
+        ''ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJyy0QeqzONPideu1mBNPXZvmPmf6hV7yoCSjrkOSzaT oo-infty@oo-laptop''
+        ''ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIF/JlCHGvwE1a14y90GyY3zzD2yaL3gxRSkKKfd+eSlF nix-on-droid@localhost''
+      ];
     };
 
     whitepaperdog = {
