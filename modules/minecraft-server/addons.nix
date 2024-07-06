@@ -38,13 +38,14 @@ let
   });
 
   cleanupAddonsScript = dir: ''
+    mkdir -p ${dir}
     # Only change jar files.
     addons=${dir}/*.jar
 
     for file in $addons ; do
       if [[ ! -L "$file" ]]; then
         # Change files that aren't symlinks.
-        mv "$file" "$file.stateful"
+        mv "$file" "$file.stateful" || true
       else
         # Remove symlinks in case of already abandoned mods or plugins.
         rm "$file"
