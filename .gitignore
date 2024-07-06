@@ -1,3 +1,4 @@
 result
 tmp
-qcow2
+*.qcow2
+*.img
