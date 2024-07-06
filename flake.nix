@@ -30,11 +30,14 @@
     pkgs = import nixpkgs { system = "x86_64-linux"; };
   in {
     packages.x86_64-linux.minecraft-server = pkgs.callPackage ./pkgs/minecraft-server {};
-    packages.x86_64-linux.vm = self.nixosConfigurations.clyz-minecraft.config.microvm.declaredRunner;
+    packages.x86_64-linux.vm = self.nixosConfigurations.vm-clyz-minecraft.config.microvm.declaredRunner;
 
     nixosModules.minecraft-server = import ./modules/minecraft-server;
 
-    nixosConfigurations.clyz-minecraft = nixpkgs.lib.nixosSystem {
+    # Don't use `nixos-rebuild switch` here! It's only for VM testing.
+    # If you want to deploy configurations locally, use `colmena apply-local`
+    # instead.
+    nixosConfigurations.vm-clyz-minecraft = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       specialArgs = { inherit inputs; };
 
@@ -55,6 +58,7 @@
         deployment = {
           targetHost = "119.3.234.247";
           tags = [ "production" ];
+          allowLocalDeployment = true;
         };
 
         imports = [
