@@ -47,6 +47,7 @@
     htop
     neofetch
     ripgrep
+    nix-direnv
   ];
 
   system.stateVersion = "24.11";
